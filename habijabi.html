@@ -1,0 +1,78 @@
+<?php
+  if(isset($_COOKIE["currentUser"])){
+    $currentUserTarget = $_COOKIE["currentUser"];
+
+    $nameQuery= "SELECT * FROM register WHERE username='$currentUserTarget'";
+    $runNameQuery = mysqli_query($conn, $nameQuery);
+
+    if($runNameQuery ==true){
+      while($getRow = mysqli_fetch_array($runNameQuery)){  ?>
+
+
+        <div class="profile-section">
+          <div class="container text-center text-white">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="proimg">
+                  <br>
+
+                  <img style="margin-top:50px; margin-left:0px; width:280px; height:300px; border-radius:10px;" class="proimg" src="avatar/<?php echo $getRow['avatar'];?>" alt="">
+
+                </div>
+
+
+
+
+                <h3 class="text-light">WELCOME!</h3>
+                <b style=" color:black; font-weight: bold;" class=" display-4"> <?php echo $getRow['firstname'];?> </b>
+                <b style=" color:black; font-weight: bold;" class="lead display-4"> <?php echo $getRow['surname'];?> </b>
+                <hr>
+
+                <i  style="font-size: 20px; color:black; font-weight: bold;" class=""> <?php echo $getRow['email'];?> </i>
+                <br>
+
+                <b  style="font-size: 20px; color:black;" class=" ">Birthday: <?php echo $getRow['birthday'];?> </b>
+                <br>
+
+                <b  style="font-size: 20px; color:black;" class=" display-5"> <?php echo $getRow['phone'];?> </b>
+
+                <br>
+                <br>
+                <br>
+
+                <a class="mr-20 btn btn-info" href="logout_core.php">Logout</a>
+                <a class="mr-20 btn btn-info" href="changepass.php">Change Password</a>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <?php
+      }
+    }
+  }
+ ?>
+
+
+
+
+ <div class="bg-dark text-light pt-1 mt-5">
+   <div class="row">
+     <hr>
+     <div class="col-md-1 mt-1">
+
+     </div>
+     <div class="col-md-6">
+       <b>Chaya Chobi Motion Limited 2020 © All Rights Reserved.</b>
+     </div>
+     <div class="col-md-2">
+
+     </div>
+     <div class="col-md-3 ">
+       <b>Develop by Tanvir & Kashfi</b>
+     </div>
+   </div>
+ </div>
